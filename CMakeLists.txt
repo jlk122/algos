@@ -2,7 +2,7 @@ project(algos)
 cmake_minimum_required(VERSION 3.22)
 
 # GoogleTest requires at least C++17
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
@@ -13,23 +13,25 @@ enable_testing()
 add_library(
   algos_sorting 
   src/insertion_sort.cc
+  src/add_binary_integers.cc
 )
 
 add_executable(
-  insertion_sort_test
+  algos_test
   test/insertion_sort_test.cc
+  test/add_binary_integers_test.cc
 )
 
 target_include_directories (
-	insertion_sort_test PRIVATE
-	src
+  algos_test PRIVATE
+  src
 )
 
 target_link_libraries(
-  insertion_sort_test
+  algos_test
   GTest::gtest_main
 )
 
 include(GoogleTest)
-gtest_discover_tests(insertion_sort_test)
+gtest_discover_tests(algos_test)
 

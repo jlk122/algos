@@ -1,4 +1,5 @@
 #include <cassert>
+#include <ranges>
 #include <vector>
 
 namespace binary {
@@ -12,12 +13,12 @@ std::vector<int> addBinaryIntegers(const std::vector<int>& A, const std::vector<
 	}
 	std::size_t n{A.size()}; // Size of input vector
 
-	std::vector<int> C(10);
+	std::vector<int> C(n + 1);
 
 	int overflow{};
-	for (std::size_t i = n - 1; i >= 0; i--)
+	for (std::size_t i : std::views::iota(std::size_t{0}, n) | std::views::reverse) // i belongs to [0, n]
 	{
-		/*assert(C.size() > i);*/
+		assert(A.size() > i);
 		int a{A.at(i) > 0 ? 1 : 0};
 		int b{B.at(i) > 0 ? 1 : 0};
 
