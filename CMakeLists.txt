@@ -14,11 +14,12 @@ add_library(
   algos_sorting 
   src/insertion_sort.cc
   src/add_binary_integers.cc
+  src/selection_sort.cc
 )
 
 add_executable(
   algos_test
-  test/insertion_sort_test.cc
+  test/sorting_test.cc
   test/add_binary_integers_test.cc
 )
 
